@@ -178,4 +178,31 @@ internal object Http {
         val headerRequest = addHeaders(request, headers)
         return this.executeRequest(headerRequest.build())
     }
+
+    fun delete(
+        url: String,
+        headers: Map<String, String>? = null,
+        params: Map<String, Any>? = null,
+        jsonBody: String? = null,
+    ): String {
+        val paramsUrl = buildParams(url, params)
+        val request = Request.Builder()
+            .url(paramsUrl)
+        if (jsonBody != null) {
+            request.delete(jsonBody.toRequestBody(jsonMediaType))
+        } else {
+            request.delete(null)
+        }
+        val headerRequest = addHeaders(request, headers)
+        return this.executeRequest(headerRequest.build())
+    }
+
+    inline fun <reified T> delete(
+        url: String,
+        headers: Map<String, String>? = null,
+        params: Map<String, Any>? = null,
+        jsonBody: String? = null,
+    ): T {
+        return this.delete(url, headers, params, jsonBody).fromJson<T>()
+    }
 }
