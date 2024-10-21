@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.14")
-    implementation("com.google.code.gson:gson:2.11.0")
+    api("com.squareup.okhttp3:okhttp:5.0.0-alpha.14")
+    api("com.google.code.gson:gson:2.11.0")
 }
 
 kotlin {
@@ -39,12 +39,12 @@ tasks.jar {
 }
 
 tasks.compileKotlin {
-    compilerOptions.jvmTarget = JvmTarget.JVM_11
+    compilerOptions.jvmTarget = JvmTarget.JVM_1_8
 }
 
 tasks.compileJava {
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
 }
 
 publishing {
