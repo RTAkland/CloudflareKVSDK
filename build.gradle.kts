@@ -32,12 +32,6 @@ artifacts {
     archives(sourceJar)
 }
 
-tasks.jar {
-    from("LICENSE") {
-        rename { "ROneBot-LICENSE-Apache2.0" }
-    }
-}
-
 tasks.compileKotlin {
     compilerOptions.jvmTarget = JvmTarget.JVM_1_8
 }
